@@ -1,6 +1,8 @@
 package com.wangjie.rapidfloatingactionbutton.util;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
@@ -35,6 +37,24 @@ public class RFABImageUtil {
         } catch (Exception ex) {
             Log.e(TAG, "", ex);
         }
+        return drawable;
+    }
+
+    public static Drawable getTintedResourceDrawableBounded(Context context, int drawableResId, int bound) {
+        Drawable drawable = null;
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                drawable = context.getResources().getDrawable(drawableResId, null);
+            } else {
+                drawable = context.getResources().getDrawable(drawableResId);
+            }
+            drawable.setBounds(0, 0, bound, bound);
+        } catch (Exception ex) {
+            Log.e(TAG, "", ex);
+        }
+        if (drawable != null)
+            drawable.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+
         return drawable;
     }
 

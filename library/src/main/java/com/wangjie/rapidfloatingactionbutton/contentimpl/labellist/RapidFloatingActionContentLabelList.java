@@ -194,7 +194,7 @@ public class RapidFloatingActionContentLabelList extends RapidFloatingActionCont
                 iconIv.setImageDrawable(drawable);
             } else if ((resId = item.getResId()) > 0) {
                 iconIv.setVisibility(VISIBLE);
-                iconIv.setImageDrawable(RFABImageUtil.getResourceDrawableBounded(getContext(), resId, rfacItemDrawableSizePx));
+                iconIv.setImageDrawable(RFABImageUtil.getTintedResourceDrawableBounded(getContext(), resId, rfacItemDrawableSizePx));
             } else {
                 iconIv.setVisibility(GONE);
             }
